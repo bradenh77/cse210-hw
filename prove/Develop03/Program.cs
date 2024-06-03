@@ -4,8 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
+        //Creates the scripture object
         Scripture scripture = new Scripture();
+        
 
+        //Creates each word object
         Words and1 = new Words("And");
         Words now = new Words("now,");
         Words i = new Words("I,");
@@ -57,7 +60,7 @@ class Program
 
 
 
-
+        //Adds each word object to the scripture list
         scripture.AddToList(and1);
         scripture.AddToList(now);
         scripture.AddToList(i);
@@ -105,14 +108,19 @@ class Program
         scripture.AddToList(your);
         scripture.AddToList(faith2);
         
+        //Preparing to start the program, clears console and displays the scripture
         Console.Clear();
         scripture.Display();
 
+
+        //Sets the program while function
         while (true)
         {
             System.Console.WriteLine("\n\nPress enter to hide words, type quit to quit");
 
             string input = Console.ReadLine();
+
+            //If the user presses enter hide 3 random words and display again
             if (input == "")
             {
                 Console.Clear();
@@ -121,10 +129,14 @@ class Program
                 scripture.RandomWordUnderscore();
                 scripture.Display();
             }
+
+            //If user types quit exit program
             else if (input == "quit")
             {
                 Environment.Exit(0);
             }
+
+            //Anything else prompt again
             else
             {
                 Console.Clear();

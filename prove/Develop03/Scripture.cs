@@ -4,31 +4,39 @@ using System.Security.Cryptography.X509Certificates;
 
 class Scripture
 {
-    private string scripture = "And now, I, Moroni, would speak somewhat concerning these things; I would show unto the world that faith is things which are hoped for and not seen; wherefore, dispute not becasue ye see not, for ye reveive no witness until after the trial of your faith.";
-
+    //Sets the list containing Words classes to contain all the words in the scripture
     public List<Words> listWords = new List<Words>();
 
-    public string GetScripture()
-    {
-        return scripture;
-    }
+    //Method to add a Words object to the scripture list
     public void AddToList(Words word)
     {
         listWords.Add(word);
     }
+
+    //Displays the whole scripture, including underscored words
     public void Display()
     {
+        
+        Refrence refrence = new Refrence();
+        System.Console.WriteLine(refrence.GetReference());
+
+        //Iterates through the list to display each object
         foreach (Words word in listWords)
         {
+
+            //Checks the _show attribute each word object. If true displays the word normally, if not builds an underscore replacement
             if (word._show == true)
             {
                 System.Console.Write($"{word._word} ");
             }
             else if (word._show == false)
             {
+
+                //Sets empty underscore variable and gets a string of each word
                 string underscores = "";
                 string wordString = word.ToString();
 
+                //Iterates through each letter and adds an underscore, keeps punctuation the same
                 foreach (char letter in wordString)
                 {
                     if (letter == ',')
@@ -41,7 +49,7 @@ class Scripture
                     }
                     else if (letter == '.')
                     {
-                        underscores += ".   ";
+                        underscores += ".";
                     }
                     else
                     {
@@ -49,6 +57,8 @@ class Scripture
                     }
                     
                 }
+
+                //Displays the underscored word
                 System.Console.Write($"{underscores} ");
 
             }
@@ -56,32 +66,40 @@ class Scripture
         }
     }
 
+    //Gets a random index from the list and changes the _show attribute to false
     public void RandomWordUnderscore()
     {
-        //string underscored = "";
+        
+
         while (true)
         {
             Random rand = new Random();
             int randomIndex = rand.Next(0, listWords.Count);
 
-            if (listWords[randomIndex]._show == true)
+            //Checks to see if all the words have been hidden, if yes skip the method
+            if (listWords.All(word => !word._show))
             {
-                listWords[randomIndex].SetShowFalse();
                 break;
             }
+            
             else
             {
-                continue;
+                //Finds words that havn't been hidden already
+                if (listWords[randomIndex]._show == true)
+                {
+                    listWords[randomIndex].SetShowFalse();
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+
             }
             
+            
         }
-        //string randomWord = listWords[randomIndex].ToString();
-
-        //foreach (char letter in randomWord)
-        //{
-        //    underscored += "_";
-        //}
-        //return underscored;
+        
     }
     
 }
