@@ -27,7 +27,7 @@ class Scripture
             //Checks the _show attribute each word object. If true displays the word normally, if not builds an underscore replacement
             if (word._show == true)
             {
-                System.Console.Write($"{word._word} ");
+                System.Console.Write($"{word.ToString()} ");
             }
             else if (word._show == false)
             {

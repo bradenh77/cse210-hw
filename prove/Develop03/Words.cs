@@ -2,7 +2,7 @@ using System;
 
 class Words
 {
-    public string _word = "";
+    private string _word = "";
 
     public bool _show = true;
 
@@ -11,6 +11,8 @@ class Words
         _word = words;
     }
 
+
+    
     public override string ToString()
     {
         return _word;
