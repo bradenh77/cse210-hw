@@ -70,24 +70,18 @@ class Reflection: Activity
 
         System.Console.WriteLine("");
 
-        System.Console.WriteLine(RandomQuestion());
+        DateTime startTime = DateTime.Now;
+        DateTime futureTime = startTime.AddSeconds(_durationSeconds);
 
-        for (int iii = 15; iii >= 0; iii--)
+        while (startTime < futureTime)
         {
-            SpinnyThingy();
+            System.Console.WriteLine(RandomQuestion());
+
+            for (int iii = 10; iii >= 0; iii--)
+            {
+                SpinnyThingy();
+            }
         }
-
-        System.Console.WriteLine(RandomQuestion());
-
-        for (int iii = 15; iii >= 0; iii--)
-        {
-            SpinnyThingy();
-        }
-
-
-        System.Console.WriteLine("You are my PogChamp");
-
-        Thread.Sleep(5000);
 
 
     }
