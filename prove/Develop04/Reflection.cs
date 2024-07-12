@@ -31,19 +31,7 @@ class Reflection: Activity
         _questions.Add("What did you learn about yourself through this experience?");
         _questions.Add("How can you keep this experience in mind in the future?"); 
 
-        Console.Clear();
-        System.Console.WriteLine($"Welcome to {_activityName}!\n");
-        System.Console.WriteLine(_activityDesc);
-        System.Console.WriteLine("\nHow long, in seconds, would you like your session? ");
-        SetDur();
-
-        Console.Clear();
-
-        System.Console.WriteLine("Get Ready...");
-        for (int ii = 3; ii >= 0; ii--)
-        {
-            SpinnyThingy();
-        }
+        ActIntro();
 
         System.Console.WriteLine("\nConsider the following prompt:\n");
 
@@ -71,16 +59,30 @@ class Reflection: Activity
         System.Console.WriteLine("");
 
         DateTime startTime = DateTime.Now;
-        DateTime futureTime = startTime.AddSeconds(_durationSeconds);
+        DateTime futureTime = startTime.AddSeconds(GetDur());
 
-        while (startTime < futureTime)
+        while (DateTime.Now < futureTime)
         {
             System.Console.WriteLine(RandomQuestion());
 
             for (int iii = 10; iii >= 0; iii--)
             {
-                SpinnyThingy();
+                if (DateTime.Now < futureTime)
+                {
+                    SpinnyThingy();
+                }
+                else
+                {
+                    continue;
+                }
+                
             }
+        }
+
+        System.Console.WriteLine($"\nWell Done! You have completed {GetDur()} seconds of the Reflection Activity!");
+        for (int iiii = 5; iiii >= 0; iiii--)
+        {
+            SpinnyThingy();
         }
 
 

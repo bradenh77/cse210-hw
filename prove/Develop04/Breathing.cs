@@ -10,4 +10,10 @@ class Breathing: Activity
     {
 
     }
+
+    public void RunBreathing()
+    {
+        ActIntro();
+        
+    }
 }

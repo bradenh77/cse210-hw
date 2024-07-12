@@ -19,12 +19,10 @@ class Activity
 
 
 
-    public void SetDur()
+    public void SetDur(string input)
     {
-        string input = Console.ReadLine();
         int intInput = int.Parse(input);
         _durationSeconds = intInput;
-
     }
     
 
@@ -41,6 +39,26 @@ class Activity
     public string GetName()
     {
         return _activityName;
+    }
+
+    public void ActIntro()
+    {
+        Console.Clear();
+        System.Console.WriteLine($"Welcome to {_activityName}!\n");
+        System.Console.WriteLine(_activityDesc);
+        System.Console.WriteLine("\nHow long, in seconds, would you like your session? ");
+        string input = Console.ReadLine();
+        SetDur(input);
+
+        Console.Clear();
+
+        System.Console.WriteLine("Get Ready...");
+        for (int ii = 3; ii >= 0; ii--)
+        {
+            SpinnyThingy();
+        }
+
+        Console.Clear();
     }
 
     public void SpinnyThingy()

@@ -14,6 +14,10 @@ class Program
             string input = Console.ReadLine();
             if (input == "1")
             {
+                Breathing breath1 = new Breathing("Breathing Activity",
+                "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.",
+                30);
+                breath1.RunBreathing();
 
             }
             else if (input == "2")
